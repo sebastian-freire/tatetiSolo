@@ -15,7 +15,12 @@ export default function Play() {
     >
       <View
         style={[
-          { borderRadius: 10, padding: 10, marginVertical: 10, backgroundColor: "#3b3f51" },
+          {
+            borderRadius: 10,
+            padding: 10,
+            marginVertical: 10,
+            backgroundColor: "#3b3f51"
+          },
           ganador === "X" && { backgroundColor: "#0f85a2" },
           ganador === "O" && { backgroundColor: "#a2330f" }
         ]}
