@@ -3,7 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import useTateti from "./tateti";
 
 export default function Play() {
-  const { matriz, jugador, handlePress, vaciarArray } = useTateti();
+  const { matriz, jugador, handlePress, vaciarArray, ganador } = useTateti();
   return (
     <View
       style={{
@@ -13,9 +13,20 @@ export default function Play() {
         alignItems: "center"
       }}
     >
-      <Text style={{ color: "white", fontSize: 24 }}>
-        Turno del jugador: {jugador}
-      </Text>
+      {ganador === "" && (
+        <Text style={{ color: "white", fontSize: 24 }}>
+          Turno del jugador: {jugador}
+        </Text>
+      )}
+
+      {(ganador === "X" || ganador === "O") && (
+        <Text style={{ color: "white", fontSize: 24 }}>
+          Gano el jugador: {ganador}
+        </Text>
+      )}
+      {ganador === "Empate" && (
+        <Text style={{ color: "white", fontSize: 24 }}>¡Empate!</Text>
+      )}
       <View style={styles.cuadricula}>
         {matriz.map((value, index) => {
           return (
@@ -31,7 +42,7 @@ export default function Play() {
                     backgroundColor: "#a2330f"
                   }
                 ]}
-                disabled={value !== ""}
+                disabled={value !== "" || ganador !== ""}
               >
                 <Text
                   style={[

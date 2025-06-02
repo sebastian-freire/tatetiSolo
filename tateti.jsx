@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 export default function useTateti() {
   const [matriz, setMatriz] = useState(Array(9).fill(""));
   const [jugador, setJugador] = useState("O");
+  const [ganador, setGanador] = useState("");
 
   const handlePress = (index) => {
     const nuevaMatriz = [...matriz];
@@ -16,8 +17,9 @@ export default function useTateti() {
 
   const checkEmpate = () => {
     if (!matriz.includes("")) {
-      alert("¡Empate!\n\nNo hay más movimientos posibles.");
-      vaciarArray();
+      // alert("¡Empate!\n\nNo hay más movimientos posibles.");
+      // vaciarArray();
+      setGanador("Empate");
     }
   };
 
@@ -46,8 +48,8 @@ export default function useTateti() {
         matriz[4] !== "") ||
       (matriz[2] === matriz[4] && matriz[4] === matriz[6] && matriz[4] !== "")
     ) {
-      alert(`¡Hay un ganador!\n\nEl jugador ${jugador} ha ganado la partida.`);
-      vaciarArray();
+      //alert(`¡Hay un ganador!\n\nEl jugador ${jugador} ha ganado la partida.`);
+      setGanador(jugador);
     } else {
       checkEmpate();
     }
@@ -93,12 +95,14 @@ export default function useTateti() {
 
   const vaciarArray = () => {
     setMatriz(Array(9).fill(""));
+    setGanador("");
   };
 
   return {
     matriz,
     jugador,
     handlePress,
-    vaciarArray
+    vaciarArray,
+    ganador
   };
 }
