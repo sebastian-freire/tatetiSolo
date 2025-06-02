@@ -24,12 +24,28 @@ export default function Play() {
                 onPress={() => handlePress(index)}
                 style={[
                   styles.button,
-                  value === "❌" && { backgroundColor: "#0f85a2" },
-                  value === "⭕" && { backgroundColor: "#a2330f" }
+                  value === "X" && {
+                    backgroundColor: "#0f85a2"
+                  },
+                  value === "O" && {
+                    backgroundColor: "#a2330f"
+                  }
                 ]}
                 disabled={value !== ""}
               >
-                <Text style={styles.botonText}>{matriz[index]}</Text>
+                <Text
+                  style={[
+                    styles.botonText,
+                    value === "X" && {
+                      color: "#095567"
+                    },
+                    value === "O" && {
+                      color: "#5b1b07"
+                    }
+                  ]}
+                >
+                  {matriz[index]}
+                </Text>
               </TouchableOpacity>
             </>
           );
@@ -58,6 +74,7 @@ const styles = StyleSheet.create({
   button: {
     width: 100,
     height: 100,
+    fontSize: 50,
     borderRadius: 10,
     alignItems: "center",
     justifyContent: "center",
@@ -70,12 +87,11 @@ const styles = StyleSheet.create({
     height: 80
   },
   botonText: {
-    color: "white",
-    fontSize: 50,
+    fontSize: 70,
     fontWeight: "bold",
     fontFamily: "sans-serif-light",
-    textShadowOffset: { width: 1, height: 1 },
-    textShadowRadius: 2
+    textShadowOffset: { width: 2, height: 2 },
+    textShadowRadius: 5
   },
   Text: {
     color: "white",

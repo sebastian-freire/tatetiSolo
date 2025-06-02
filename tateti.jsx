@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function useTateti() {
   const [matriz, setMatriz] = useState(Array(9).fill(""));
-  const [jugador, setJugador] = useState("⭕");
+  const [jugador, setJugador] = useState("O");
 
   const handlePress = (index) => {
     const nuevaMatriz = [...matriz];
@@ -11,7 +11,7 @@ export default function useTateti() {
   };
 
   const cambiarJugador = () => {
-    setJugador(jugador === "❌" ? "⭕" : "❌");
+    setJugador(jugador === "X" ? "O" : "X");
   };
 
   const checkEmpate = () => {
