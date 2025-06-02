@@ -13,20 +13,28 @@ export default function Play() {
         alignItems: "center"
       }}
     >
-      {ganador === "" && (
-        <Text style={{ color: "white", fontSize: 24 }}>
-          Turno del jugador: {jugador}
-        </Text>
-      )}
+      <View
+        style={[
+          { borderRadius: 10, padding: 10, marginVertical: 10, backgroundColor: "#3b3f51" },
+          ganador === "X" && { backgroundColor: "#0f85a2" },
+          ganador === "O" && { backgroundColor: "#a2330f" }
+        ]}
+      >
+        {ganador === "" && (
+          <Text style={{ color: "white", fontSize: 24 }}>
+            Turno del jugador: {jugador}
+          </Text>
+        )}
+        {(ganador === "X" || ganador === "O") && (
+          <Text style={{ color: "white", fontSize: 24 }}>
+            Gano el jugador: {ganador}
+          </Text>
+        )}
+        {ganador === "Empate" && (
+          <Text style={{ color: "white", fontSize: 24 }}>¡Empate!</Text>
+        )}
+      </View>
 
-      {(ganador === "X" || ganador === "O") && (
-        <Text style={{ color: "white", fontSize: 24 }}>
-          Gano el jugador: {ganador}
-        </Text>
-      )}
-      {ganador === "Empate" && (
-        <Text style={{ color: "white", fontSize: 24 }}>¡Empate!</Text>
-      )}
       <View style={styles.cuadricula}>
         {matriz.map((value, index) => {
           return (
